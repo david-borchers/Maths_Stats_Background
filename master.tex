@@ -1,0 +1,193 @@
+
+%&LaTeX
+\documentclass[12pt]{article}
+\usepackage{latexsym}
+\usepackage{epsf,amsmath}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{color}
+\usepackage{txfonts}
+\usepackage{bm}              % bold math and greek symbols
+\usepackage{multicol} % allows some sections with multiple columns
+\usepackage{wrapfig}  % allows text wrapped around figures
+\usepackage{float}  % for figure positioning control
+
+\setlength{\oddsidemargin}{-0.25in}
+\setlength{\evensidemargin}{-0.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\headsep}{0in}
+\setlength{\textwidth}{7in}
+\setlength{\textheight}{9.8in}
+\setlength{\parindent}{0in}
+\renewcommand{\baselinestretch}{1.0}
+\setlength{\parskip}{0.1in}
+
+\usepackage{makeidx,afterpage,rotating,latexsym,psfrag,epsf,epsfig,amssymb,chicago,float,subfigure,color}
+% package for neat insertion of hyperlinks
+\usepackage[hidelinks]{hyperref}
+\usepackage{xcolor}
+\hypersetup{
+    colorlinks,
+    linkcolor={red!50!black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+}
+% easy use of \ceil and \floor:
+\usepackage{mathtools}
+
+
+\usepackage[colorinlistoftodos,linecolor=gray,backgroundcolor=white]{todonotes}
+
+%\usepackage{footnote}
+%\makesavenoteenv{tabular}
+%\makesavenoteenv{table}
+
+
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+%% Set Page Size etc,...
+\setlength{\oddsidemargin}{8pt} \setlength{\evensidemargin}{-7pt}
+\setlength{\hoffset}{0pt} \setlength{\voffset}{-36pt}
+\setlength{\topmargin}{0pt} \setlength{\headheight}{10pt}
+\setlength{\headsep}{15pt} \setlength{\footskip}{18pt}
+\setlength{\columnsep}{20pt} \setlength{\paperheight}{846pt}
+\setlength{\paperwidth}{594pt} \setlength{\textwidth}{449pt}
+\setlength{\textheight}{681pt}
+
+
+% my command definitions
+% User-defined commands:
+\newcommand{\ul}[1]{\underline{#1}}
+\newcommand{\wh}[1]{\mbox{$\widehat{#1}$}}
+\newcommand{\be}{\begin{eqnarray}}
+\newcommand{\bes}{\begin{eqnarray*}}
+\newcommand{\ee}{\end{eqnarray}}
+\newcommand{\ees}{\end{eqnarray*}}
+\newcommand{\bd}{\begin{description}}
+\newcommand{\ed}{\end{description}}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\ben}{\begin{enumerate}}
+\newcommand{\een}{\end{enumerate}}
+%\input{new_commands}
+
+
+\newcommand{\gap}{\textcolor{white}}
+\usepackage{ifthen}
+\newboolean{includegapp}
+\setboolean{includegapp}{true}
+\newcommand{\gapp}[2]{\ifthenelse{#1}{#2}{}}
+\newcommand{\garp}{\gapp{\boolean{includegapp}}}
+
+\newboolean{includegappp}
+\setboolean{includegappp}{false}
+\newcommand{\gappp}[2]{\ifthenelse{#1}{#2}{}}
+\newcommand{\gasp}{\gappp{\boolean{includegappp}}}
+
+\newcommand{\mc}{0}  % Signals my copy for insertion of stuff
+\newcommand{\workspace}[2]{\ifthenelse{\mc=1} {\parbox[b][#1][c]{15cm}{\tiny #2}} {\parbox[b][#1][c]{15cm}{}}}
+\newcommand{\ql}{`}
+\newcommand{\bn}{\begin{equation}}
+\newcommand{\en}{\end{equation}}
+\newcommand{\bna}{\begin{eqnarray}}
+\newcommand{\ena}{\end{eqnarray}}
+\newcommand{\und}{\underset}
+\newcommand{\bnastar}{\begin{eqnarray*}}
+\newcommand{\enastar}{\end{eqnarray*}}
+\newcommand{\qql}{\textquotedblleft}
+\newcommand{\qqr}{\textquotedblright}
+\newcommand{\simdot}{\begin{array}{c} \vspace*{-20pt}\\
+ . \vspace*{-7pt}\\ \sim \vspace*{-11pt}\\ .
+\end{array}
+}
+\newcommand{\bs}[1]{\boldsymbol{#1}}
+%\newcommand{\bv}{\footnotesize\begin{verbatim}}
+%\newcommand{\ev}{\end{verbatim}\normalsize} % does not work because thinks this is verbatim text
+
+\graphicspath{{./figures/}}
+
+% the document
+
+
+\pagenumbering{roman}
+\setcounter{page}{1}
+
+
+\includeonly{
+maths,
+distributions,
+frequentist,
+bayesian
+}
+
+
+\begin{document}
+
+\abovedisplayskip 0.0in
+\belowdisplayskip 0.0in
+
+\centerline{\LARGE \bfseries Some Useful Maths and Stats} \vspace*{2 truemm}
+\centerline{\Large \bfseries 2022/23}
+
+\vspace*{10 truemm}
+
+\begin{center}
+David Borchers and Chris Sutherland
+\end{center}
+
+\vspace*{70 truemm}
+
+\begin{center}
+{\sc \Large University of St. Andrews }
+
+~
+
+\epsfxsize=0.5truein\epsffile{StAcrest.pdf}
+
+~
+
+{\sc \Large School of Mathematics and Statistics}
+\end{center}
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\setcounter{equation}{1}
+
+\hyphenpenalty=5000
+\tolerance=1000
+
+\include{maths}
+\include{distributions}
+\include{frequentist}
+\include{bayesian}
+
+\pagestyle{empty}
+
+\clearpage
+%\newpage
+
+%\part{Tutorials}
+%\include{tutorial1}
+
+%\part{Tutorial Solutions}
+%\include{tutorial1solns}
+
+%\part{Project}
+%\include{project}
+%\include{projectsolns}
+
+%\part{Additional Material}
+%\include{AdditionalExamples}
+%\include{AdditionalExamplesSolutions}
+
+\end{document}
+
+
